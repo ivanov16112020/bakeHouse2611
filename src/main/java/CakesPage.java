@@ -25,7 +25,9 @@ public class CakesPage {
 
         driver.findElement(InBasketButton).click();
         //add cake to basket
-        String text = driver.findElement(textAboutBasket).getText();
+        WebElement fieldWithText = driver.findElement(textAboutBasket);
+        String text = ((JavascriptExecutor)driver).executeScript("return arguments[0].lastChild.textContent;", fieldWithText).toString();
+        //String text = driver.findElement(textAboutBasket).getText();
         return text;
         //find text about adding goods in basket
     }
